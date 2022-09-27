@@ -5,6 +5,8 @@
  * 1. Introduction to Java helpful.
  */
 
+import java.util.ArrayList;
+
 public abstract class Bag {
     /*
      * TODO: Create the following private instance variables
@@ -16,7 +18,7 @@ public abstract class Bag {
     private String color;
     private int numberOfContents;
     private int capacity;
-    private String[] contents = new String[this.capacity];
+    private ArrayList<String> contents;
 
     /*
      * TODO: Create a constructor that takes two arguments:
@@ -55,8 +57,8 @@ public abstract class Bag {
      * TODO: Create a setter function called setColor which sets the
      *       color of this bag to the given color.
      */
-    public void setColor(String given_color) {
-        this.color = given_color;
+    public void setColor(String givenColor) {
+        this.color = givenColor;
     }
 
     /*
@@ -71,8 +73,8 @@ public abstract class Bag {
      */
     public Boolean addItem(String item_in_bag) {
         if (this.numberOfContents < this.capacity) {
-            this.numberOfContents = this.numberOfContents + 1;
-            this.contents[this.numberOfContents] = item_in_bag;
+            this.contents.add(item_in_bag);
+            this.numberOfContents++;
             return true;
         } else {
             return false;
@@ -93,12 +95,9 @@ public abstract class Bag {
         if (this.numberOfContents == 0) {
             return null;
         } else {
-            String poppedItem = this.contents[this.numberOfContents - 1];
-            String[] newArray = new String[this.capacity];
-            for (int i = 0; i < (this.numberOfContents - 1); i++) {
-                newArray[i] = this.contents[i];
-            }
-            this.numberOfContents = this.numberOfContents - 1;
+            String poppedItem = this.contents.get(this.numberOfContents - 1);
+            this.contents.remove(this.numberOfContents - 1);
+            this.numberOfContents--;
             return poppedItem;
         }
     }

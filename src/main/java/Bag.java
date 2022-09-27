@@ -74,7 +74,7 @@ public abstract class Bag {
     public Boolean addItem(String item_in_bag) {
         if (this.numberOfContents < this.capacity) {
             this.contents.add(item_in_bag);
-            this.numberOfContents++;
+            this.numberOfContents = this.numberOfContents + 1;
             return true;
         } else {
             return false;
@@ -97,7 +97,7 @@ public abstract class Bag {
         } else {
             String poppedItem = this.contents.get(this.numberOfContents - 1);
             this.contents.remove(this.numberOfContents - 1);
-            this.numberOfContents--;
+            this.numberOfContents = this.numberOfContents - 1;
             return poppedItem;
         }
     }
